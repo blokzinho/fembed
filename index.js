@@ -2,7 +2,7 @@ const express = require("express")
 const server = express()
 const fetch = require("node-fetch")
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const getJSON = async (id) => {
     const redirect = await fetch(`https://fembed.net/v/${id}`).then(res => res.url.replace("/v/", "/api/source/"))
