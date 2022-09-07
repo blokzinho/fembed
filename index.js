@@ -2,6 +2,7 @@ const express = require("express")
 const server = express()
 const fetch = require("node-fetch")
 
+const port = process.env.PORT || 3001;
 
 const getJSON = async (id) => {
     const redirect = await fetch(`https://fembed.net/v/${id}`).then(res => res.url.replace("/v/", "/api/source/"))
@@ -30,5 +31,11 @@ server.get("/:id", async (req, res) => {
     return res.json(videoJSON["data"])
 })
 
-server.listen(3000)
+server.listen(port, () => {
+    console.log(
+        "Express server listening on port %d in %s mode",
+        port,
+        server.settings.env
+    )
+})
 
