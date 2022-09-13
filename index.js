@@ -5,7 +5,7 @@ const fetch = require("node-fetch")
 const port = process.env.PORT || 3000;
 
 const getJSON = async (id) => {
-    const redirect = await fetch(`https://fembed.net/v/${id}`).then(res => res.url.replace("/v/", "/api/source/"))
+    const redirect = await fetch(`https://fembed.com/v/${id}`).then(res => res.url.replace("/v/", "/api/source/"))
     const video = await fetch(redirect, { method: "POST" }).then(res => res.json())
     if (!video["success"]) return { success: false }
     return video
